@@ -59,7 +59,7 @@ def notion_read():
     #print(pageIDs)
 # ---------------- NOTION WRITE function ----------------
 def notion_write(assignmentInfo,linkInfo,classInfo,dueInfo):
-    global assignment
+    assignment
     
     #print(notion_pull_specific_page(assignment['html_url'])['Completed']['status']['name']) #magiccccccc
     print
@@ -123,7 +123,7 @@ def notion_pull_specific_page(url):
     return page['properties']
 
 def notion_update_completed(url):
-    global notionProps
+    notionProps
     notion.pages.update(
         page_id=pageIDs[url],
         properties={"Completed": {"status": {"name": "Completed"}}}
@@ -142,7 +142,7 @@ def notion_update_time():
     )
 # ---------------- TELEGRAM ----------------
 def notify_via_telegram(name,message):
-    global assignment
+    assignment
     assignment['html_url']
     send_telegram(f'<a href="{assignment["html_url"]}">{name}</a> {message}')
     
