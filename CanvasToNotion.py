@@ -11,7 +11,7 @@ with open("private.yaml", 'r') as file:
 
 # ======================== VARIABLES ========================
 # ---------------- CANVAS COURSE ----------------
-coursesUrl = f"https://{private["Canvas"]["District_domain"]}/api/v1/courses"
+coursesUrl = f"https://{private['Canvas']['District_domain']}/api/v1/courses"
 canvasHeaders = CaseInsensitiveDict()
 canvasHeaders["Authorization"] = "Bearer "+ private["Canvas"]["API_Key"]
 courseParams = {"enrollment_state": "active"}
