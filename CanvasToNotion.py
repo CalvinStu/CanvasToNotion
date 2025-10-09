@@ -144,7 +144,7 @@ def notion_update_time():
 def notify_via_telegram(name,message):
     global assignment
     assignment['html_url']
-    send_telegram(f'<a href="{assignment['html_url']}">{name}</a> {message}')
+    send_telegram(f'<a href="{assignment["html_url"]}">{name}</a> {message}')
     
 def telegram_check_status():
     updates = requests.get(f"https://api.telegram.org/bot{TGbotToken}/getUpdates").json()
