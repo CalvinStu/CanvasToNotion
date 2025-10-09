@@ -11,8 +11,14 @@
 * try except function for if api calls fail
 * don't run overnight?
 * simplify notion key thingy
-* make all day if time is 11:59pm PACIFIC TIME  
+* don't add far future assignments
+* properly setup .venv
 <br>
 
 **Known Bugs**
-* Shows times like 11:05 as 11:5
+* Shows times like 11:05 as 11:5  
+<br>
+
+**Things to install**
+* notion-client
+* Pylance (?)

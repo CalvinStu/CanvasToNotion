@@ -3,6 +3,7 @@ import json
 from requests.structures import CaseInsensitiveDict
 from notion_client import Client
 from datetime import datetime, timedelta, timezone
+from zoneinfo import ZoneInfo
 import time
 import yaml
 
@@ -74,11 +75,19 @@ def notion_write(assignmentInfo,linkInfo,classInfo,dueInfo):
         }
 
         if assignment.get("due_at"):
-            print(assignment.get("due_at"))
-            
+            if (t := datetime.fromisoformat(assignment.get("due_at").replace("Z", "+00:00"))
+                    .astimezone(ZoneInfo("America/Los_Angeles"))).hour == 23 and t.minute == 59:
             #2026-01-20T20:18:00Z
             #if assignment.get("due_at");
-            notionProps['Due'] = {"date": {"start": dueInfo}}
+                notionProps['Due'] = {"date": {
+                    "start": datetime.fromisoformat("2025-10-13T06:59:59Z".replace("Z", "+00:00"))
+                        .astimezone(ZoneInfo("America/Los_Angeles"))
+                        .date()
+                        .isoformat()
+                    }
+                }
+            else:
+                notionProps['Due'] = {"date": {"start": dueInfo}}
 
         notion.pages.create(
             parent={"database_id": DATABASE_ID},
