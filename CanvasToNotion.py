@@ -6,7 +6,7 @@ from datetime import datetime, timedelta, timezone
 import time
 import yaml
 
-with open(".gitignore/private.yaml", 'r') as file:
+with open("private.yaml", 'r') as file:
     private = yaml.safe_load(file)
 
 # ======================== VARIABLES ========================
@@ -155,7 +155,7 @@ def telegram_check_status():
             requests.get(f"https://api.telegram.org/bot{TGbotToken}/getUpdates", params={"offset": update_id})
 
 def send_telegram(msg):
-    requests.post(
+    response = requests.post(
         f"https://api.telegram.org/bot{TGbotToken}/sendMessage",
             json={
                 "chat_id": TGchatID,
@@ -163,10 +163,16 @@ def send_telegram(msg):
                 "parse_mode": "HTML",
                 "disable_web_page_preview": True
             }
-    )
+        )
+    print(response.status_code)
+
+
+
 
 # ======================== MAIN ========================
-#send_telegram("starting")
+
+send_telegram("starting")
+print("sent")
 # ---------------- COURSES ----------------
 while True:
     print("Fetching Course Info...")

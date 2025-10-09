@@ -11,5 +11,8 @@
 * try except function for if api calls fail
 * don't run overnight?
 * simplify notion key thingy
-* make all day if time is 11:59pm PACIFIC TIME
-* if time is xx:05 add 0
+* make all day if time is 11:59pm PACIFIC TIME  
+<br>
+
+**Known Bugs**
+* Shows times like 11:05 as 11:5
