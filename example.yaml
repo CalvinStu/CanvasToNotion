@@ -1,0 +1,13 @@
+#rename to private.yaml and put in same folder as CanvasToNotion.py
+
+Canvas:
+  API_Key: "####~X#Y#Z#"
+  District_domain: "canvas.instructure.com"
+
+Notion:
+  API_Key: "ntn_X#Y#Z#"
+  Database_ID: "X#Y#Z#"
+  
+Telegram:
+  Bot_Token: "##########:X#Y#Z#"
+  Chat_ID: "##########"
