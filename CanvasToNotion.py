@@ -130,12 +130,13 @@ def notion_update_completed(url):
     )
 
 def notion_update_time():
+    t = time.localtime()
     notion.databases.update(
         database_id=DATABASE_ID,
         description=[
         {
             "type": "text",
-            "text": {"content": time.strftime(f"Last Updated: {(time.localtime()[1])}/{(time.localtime()[2])} {time.localtime()[3]%12}:{time.localtime()[4]}{"pm" if time.localtime()[3] >= 12 else "am"}")}
+            "text": {"content": f"Last Updated: {t.tm_mon}/{t.tm_mday} {t.tm_hour%12}:{t.tm_min} {'pm' if t.tm_hour >= 12 else 'am'}"}
         }
     ]
     )
