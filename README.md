@@ -13,6 +13,7 @@
 * simplify notion key thingy
 * don't add far future assignments
 * properly setup .venv
+* only pull canvas assignments from notion
 <br>
 
 **Known Bugs**
