@@ -44,12 +44,30 @@ def notion_read():
     checkUrl = []
     pageIDs = {}
 
-    notionReadResponse = []
 
-    notionReadResponse = notion.databases.query(database_id=DATABASE_ID)
-    print(f"\033[37mAssignments in Notion: {len(notionReadResponse['results'])}\033[0m")  # should be >0 if notion DB has pages
-    
-    for page in notionReadResponse['results']:
+    ##ahhhh
+    notionReadResponse = []
+    has_more = True
+    next_cursor = None
+
+    while has_more:
+        response = notion.databases.query(
+            database_id=DATABASE_ID,
+            start_cursor=next_cursor
+        )
+
+        notionReadResponse.extend(response["results"])
+        has_more = response.get("has_more", False)
+        next_cursor = response.get("next_cursor", None)
+
+    ##AHHH
+
+    #print(f"\033[37mAssignments in Notion: {len(notionReadResponse['results'])}\033[0m")  # should be >0 if notion DB has pages
+    print(f"\033[37mAssignments in Notion: {len(notionReadResponse)}\033[0m") ##ahh
+
+
+    for page in notionReadResponse: ##ahh
+
         props = page['properties']
         url = props.get("Link", {}).get("url")
         if url:
