@@ -12,7 +12,6 @@
 * simplify notion key thingy
 * don't add far future assignments
 * properly setup .venv
-* google tasks version?
 <br>
 
 **Known Bugs**
