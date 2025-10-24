@@ -44,27 +44,29 @@ def notion_read():
     checkUrl = []
     pageIDs = {}
 
-
-    ##ahhhh
+    ##get paged data
     notionReadResponse = []
     has_more = True
     next_cursor = None
 
     while has_more:
         response = notion.databases.query(
-            database_id=DATABASE_ID,
-            start_cursor=next_cursor
-        )
+        database_id=DATABASE_ID,
+        start_cursor=next_cursor,
+        filter={ ##only check assignments with canvas link
+            "property": "Link",
+            "url": {
+                "is_not_empty": True
+                }
+            }
+        )   
 
         notionReadResponse.extend(response["results"])
         has_more = response.get("has_more", False)
         next_cursor = response.get("next_cursor", None)
-
     ##AHHH
 
-    #print(f"\033[37mAssignments in Notion: {len(notionReadResponse['results'])}\033[0m")  # should be >0 if notion DB has pages
     print(f"\033[37mAssignments in Notion: {len(notionReadResponse)}\033[0m") ##ahh
-
 
     for page in notionReadResponse: ##ahh
 
