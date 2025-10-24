@@ -239,7 +239,7 @@ while True:
                     if datetime.strptime(assignment.get("created_at"), "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc) >= datetime.now(timezone.utc) - timedelta(days=60): 
                         notion_write(assignment.get('name'),assignment.get('html_url'),course_name,assignment.get("due_at"))
             else:    
-                if datetime.strptime(assignment.get("due_at"), "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc) >= datetime.now(timezone.utc) - timedelta(days=1):
+                if datetime.strptime(assignment.get("due_at"), "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc) >= datetime.now(timezone.utc) - timedelta(days=30):
                     notion_write(assignment.get('name'),assignment.get('html_url'),course_name,assignment.get("due_at"))
 
     print("\n\033[1m\033[32mDONE!\033[0m\n")
