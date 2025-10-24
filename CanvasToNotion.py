@@ -132,7 +132,7 @@ def notion_pull_specific_page(url):
     return page['properties']
 
 def notion_update_completed(url):
-    notionProps
+    #notionProps
     notion.pages.update(
         page_id=pageIDs[url],
         properties={"Completed": {"status": {"name": "Completed"}}}
