@@ -20,4 +20,3 @@
 
 **Things to install**
 * notion-client
-* Pylance (?)
